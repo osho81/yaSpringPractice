@@ -50,8 +50,8 @@ public class PersonService implements PersonServiceRepository {
 
     // Find person with certain field and sort by certain field; example method
     @Override
-    public List<Person> findPersonByNameOrderByAgeAsc(String name) {
-        return personRepository.findPersonByNameOrderByAgeAsc(name);
+    public List<Person> findByNameOrderByAgeAsc(String name) {
+        return personRepository.findByNameOrderByAgeAsc(name);
     }
 
     public List<Person> findByNameOrderByAgeDesc(String name) {
