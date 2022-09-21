@@ -51,7 +51,7 @@ public class PersonController {
 
     //////////////////// UPDATE ////////////////////
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<Person> updatePerson(@PathVariable int id, @RequestBody Person person) {
         return new ResponseEntity<Person>(personService.updatePerson(person, id), HttpStatus.CREATED);
     }
@@ -64,5 +64,11 @@ public class PersonController {
 
 
     //////////////////// DELETE ////////////////////
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deletePerson(@PathVariable int id) {
+        personService.deletePerson(id);
+        return new ResponseEntity<String>("Person with id " + id + " successfully deleted", HttpStatus.OK);
+    }
 
 }

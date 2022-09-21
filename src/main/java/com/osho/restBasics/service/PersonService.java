@@ -117,9 +117,25 @@ public class PersonService implements PersonServiceRepository {
             // If email-field is not empty and not occupied: Set old email to new passed in email
             personToUpdate.setEmail(person.getEmail());
         }
-
-
         return personRepository.save(personToUpdate);
+    }
+
+
+    //////////////////// DELETE ////////////////////
+
+    // Delete method - simple version (when no issue with fk constraints exists yet)
+    @Override
+    public void deletePerson(int id) {
+        // Check if person with this id exist, or else throw error/stop method
+        personRepository.findById(id).orElseThrow(() -> new IllegalStateException("No id " + id + " in database."));
+        personRepository.deleteById(id); // If exists, delete
+
+        // Alternatively: assign person here if person exists, then delete the person
+//        Person personToDelete = personRepository.findById(id).orElseThrow(
+//                () -> new IllegalStateException("No id " + id + " in database."));
+//        personRepository.delete(personToDelete);
+
+
     }
 
 }

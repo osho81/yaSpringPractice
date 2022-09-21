@@ -23,5 +23,6 @@ public interface PersonServiceRepository {
     Person updatePersonWithLogic(Person person, int id);
 
     ///////// DELETE /////////////
+    void deletePerson(int id);
 
 }
