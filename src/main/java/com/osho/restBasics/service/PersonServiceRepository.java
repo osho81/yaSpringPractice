@@ -20,13 +20,16 @@ public interface PersonServiceRepository {
     List<Person> findByNameOrderByAgeAsc(String name);
     List<Person> findByNameOrderByAgeDesc(String name);
 
+
     /////// CREATE (SAVE) /////////
     Person createPerson(Person person);
     Person createPersonWithLogic(Person person);
 
+
     ///////// UPDATE /////////////
     Person updatePerson(Person person, int id);
     Person updatePersonWithLogic(Person person, int id);
+
 
     ///////// DELETE /////////////
     void deletePerson(int id);
