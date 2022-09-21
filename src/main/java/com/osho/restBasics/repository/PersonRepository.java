@@ -20,7 +20,6 @@ public interface PersonRepository extends JpaRepository<Person, Integer> {
 
     List<Person> findByOrderByNameAsc(); // Default is ascending, so "Asc" is not compulsory
     List<Person> findByOrderByNameDesc();
-
-//    List<Person> findAllByNameOrderByNameAsc(String name);
-//    List<Person> findAllByNameOrderByNameDesc(String name);
+    List<Person> findByNameOrderByAgeAsc(String name);
+    List<Person> findByNameOrderByAgeDesc(String name);
 }

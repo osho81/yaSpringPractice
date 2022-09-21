@@ -36,6 +36,8 @@ public class PersonService implements PersonServiceRepository {
         return personRepository.findAll();
     }
 
+    // GET and SORT
+
     @Override // Find all persons, and sort ascending
     public List<Person> getAllPersonsAsc() {
         return personRepository.findByOrderByNameAsc();
@@ -47,8 +49,13 @@ public class PersonService implements PersonServiceRepository {
     }
 
     // Find person with certain field and sort by certain field; example method
-    public List<Person> findByNameOrderByNameAsc() {
-        return personRepository.find
+    @Override
+    public List<Person> findPersonByNameOrderByAgeAsc(String name) {
+        return personRepository.findPersonByNameOrderByAgeAsc(name);
+    }
+
+    public List<Person> findByNameOrderByAgeDesc(String name) {
+        return personRepository.findByNameOrderByAgeDesc(name);
     }
 
 
@@ -149,8 +156,6 @@ public class PersonService implements PersonServiceRepository {
 //        Person personToDelete = personRepository.findById(id).orElseThrow(
 //                () -> new IllegalStateException("No id " + id + " in database."));
 //        personRepository.delete(personToDelete);
-
-
     }
 
 }

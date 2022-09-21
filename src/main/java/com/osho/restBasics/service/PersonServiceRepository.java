@@ -13,8 +13,12 @@ public interface PersonServiceRepository {
     //////// READ (GET) ///////////
     Person getPerson(int id);
     List<Person> getAllPersons();
+
+    // GET and SORT
     List<Person> getAllPersonsAsc();
     List<Person> getAllPersonsDesc();
+    List<Person> findByNameOrderByAgeAsc(String name);
+    List<Person> findByNameOrderByAgeDesc(String name);
 
     /////// CREATE (SAVE) /////////
     Person createPerson(Person person);
