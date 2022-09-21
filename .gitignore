@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Temporary added to gitignore, during dev
+# src/main/resources/application.properties
