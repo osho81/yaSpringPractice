@@ -45,6 +45,10 @@ public class PersonController {
         return new ResponseEntity<List<Person>>(personService.getAllPersonsDesc(), HttpStatus.OK);
     }
 
+    @GetMapping("/{name}/asc")
+    public ResponseEntity<List<Person>> findByNameOrderByNameAsc(@PathVariable String name) {
+        return new ResponseEntity<List<Person>>(personService.findByNameOrderByNameAsc(), HttpStatus.OK);
+    }
 
     //////////////////// CREATE (SAVE) ////////////////////
 

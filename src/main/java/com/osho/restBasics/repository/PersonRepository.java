@@ -18,7 +18,7 @@ public interface PersonRepository extends JpaRepository<Person, Integer> {
     Optional<Person> findPersonByEmail(String email);
     Optional<Person> findByEmail(String email);
 
-    List<Person> findByOrderByNameAsc();
+    List<Person> findByOrderByNameAsc(); // Default is ascending, so "Asc" is not compulsory
     List<Person> findByOrderByNameDesc();
 
 //    List<Person> findAllByNameOrderByNameAsc(String name);

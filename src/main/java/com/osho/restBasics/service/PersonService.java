@@ -36,14 +36,19 @@ public class PersonService implements PersonServiceRepository {
         return personRepository.findAll();
     }
 
-    @Override
+    @Override // Find all persons, and sort ascending
     public List<Person> getAllPersonsAsc() {
         return personRepository.findByOrderByNameAsc();
     }
 
-    @Override
+    @Override // Find all persons, and sort descending
     public List<Person> getAllPersonsDesc() {
         return personRepository.findByOrderByNameDesc();
+    }
+
+    // Find person with certain field and sort by certain field; example method
+    public List<Person> findByNameOrderByNameAsc() {
+        return personRepository.find
     }
 
 
