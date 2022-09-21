@@ -43,7 +43,7 @@ public class PersonController {
         return new ResponseEntity<Person>(personService.createPerson(person), HttpStatus.CREATED);
     }
 
-    @PostMapping("/withlogic")
+    @PostMapping("/logiccreate")
     public ResponseEntity<Person> createPersonWithLogic(@RequestBody Person person) {
         return new ResponseEntity<Person>(personService.createPersonWithLogic(person), HttpStatus.CREATED);
     }
@@ -62,5 +62,7 @@ public class PersonController {
         return new ResponseEntity<Person>(personService.updatePersonWithLogic(person, id), HttpStatus.CREATED);
     }
 
+
+    //////////////////// DELETE ////////////////////
 
 }
