@@ -54,6 +54,7 @@ public class PersonService implements PersonServiceRepository {
         return personRepository.findByNameOrderByAgeAsc(name);
     }
 
+    @Override
     public List<Person> findByNameOrderByAgeDesc(String name) {
         return personRepository.findByNameOrderByAgeDesc(name);
     }
