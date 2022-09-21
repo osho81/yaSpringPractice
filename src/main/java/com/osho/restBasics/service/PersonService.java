@@ -1,0 +1,125 @@
+package com.osho.restBasics.service;
+
+import com.osho.restBasics.model.Person;
+import com.osho.restBasics.repository.PersonRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+// In this class the core parts of the method is done; the logic (including if null etc.)
+// The methods here gets called by the PersonController
+// The methods here uses PersonRepository for the crud operation itself
+
+@Service
+public class PersonService implements PersonServiceRepository {
+
+    @Autowired // Autowire this declaration OR autowire a constructor
+    private PersonRepository personRepository;
+
+
+    //////////////////// READ (GET) ////////////////////
+
+    @Override
+    public Person getPerson(int id) {
+        Optional<Person> foundPerson = personRepository.findById(id);
+        if (foundPerson.isPresent()) {
+            return foundPerson.get();
+        } else {
+            throw new IllegalStateException("No person with id " + id + " exists");
+        }
+    }
+
+    @Override
+    public List<Person> getAllPersons() {
+        return personRepository.findAll();
+    }
+
+
+    //////////////////// CREATE (SAVE) ////////////////////
+    @Override
+    public Person createPerson(Person person) {
+        // Ensure a person with same email doesn't already exist
+        Optional<Person> foundByEmail = personRepository.findPersonByEmail(person.getEmail());
+        if (foundByEmail.isPresent()) {
+            throw new IllegalStateException(person.getEmail() + " is used by another person");
+        } else {
+            System.out.println(person.getName() + " is added");
+            personRepository.save(person);
+        }
+        return personRepository.save(person);
+    }
+
+    @Override
+    public Person createPersonWithLogic(Person person) {
+        Optional<Person> foundByEmail = personRepository.findPersonByEmail(person.getEmail());
+        if (foundByEmail.isPresent()) {
+            throw new IllegalStateException(person.getEmail() + " is used by another person");
+        } else {
+            // Before saving, check if is an adult, and if name-field is included
+            if (person.getName().isEmpty() || person.getName() == null) {
+                throw new IllegalStateException("Name-field is empty");
+            }
+            if (person.getAge() < 18) {
+                throw new IllegalStateException("Only adults are allowed to register");
+            }
+            System.out.println(person.getName() + " is added");
+            personRepository.save(person);
+        }
+        return personRepository.save(person);
+    }
+
+
+    //////////////////// UPDATE ////////////////////
+
+    @Override
+    public Person updatePerson(Person person, int id) {
+        // Find person to update, i.e. the person with same id as the passed-in-person
+        Person personToUpdate = personRepository.findById(id).orElseThrow(
+                () -> new IllegalStateException("No person with id " + id + " exists"));
+
+        // If personToUpdate is found, enter the fields from the person-argument into the personToUpdate
+        personToUpdate.setName(person.getName());
+        personToUpdate.setAge(person.getAge());
+        personToUpdate.setEmail(person.getEmail());
+        return personRepository.save(personToUpdate);
+    }
+
+    // Update method version 2, with logic: checks if email occupied, name missing & age>=18
+    @Override
+    public Person updatePersonWithLogic(Person person, int id) {
+        // Find person to update, i.e. the person with same id as the passed-in-person
+        Person personToUpdate = personRepository.findById(id).orElseThrow(
+                () -> new IllegalStateException("No person with id " + id + " exists"));
+
+        // If the passed-in-person's name-field is NOT empty or null, set it as new name
+        if (person.getName().isEmpty() || person.getName() == null) {
+            throw new IllegalStateException("Name-field is empty");
+        } else {
+            personToUpdate.setName(person.getName());
+        }
+
+        // If the passed-in-person's age-field is above 18/is adult, set it as the new age
+        if (person.getAge() < 18) {
+            throw new IllegalStateException("Only adults are allowed to register");
+        } else {
+            personToUpdate.setAge(person.getAge());
+        }
+
+        // Check if the email is already in use by any other person/user
+        Optional<Person> foundByEmail = personRepository.findByEmail(person.getEmail());
+        if (foundByEmail.isPresent()) {
+            throw new IllegalStateException(person.getEmail() + " is already in use");
+        } else if (person.getEmail().isEmpty() || person.getEmail() == null) {
+            throw new IllegalStateException("Email-field is empty");
+        } else {
+            // If email-field is not empty and not occupied: Set old email to new passed in email
+            personToUpdate.setEmail(person.getEmail());
+        }
+
+
+        return personRepository.save(personToUpdate);
+    }
+
+}
