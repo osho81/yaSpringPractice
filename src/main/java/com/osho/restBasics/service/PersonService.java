@@ -1,5 +1,6 @@
 package com.osho.restBasics.service;
 
+import com.osho.restBasics.exception.ResourceNotFoundException;
 import com.osho.restBasics.model.Person;
 import com.osho.restBasics.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,9 @@ public class PersonService implements PersonServiceRepository {
         if (foundPerson.isPresent()) {
             return foundPerson.get();
         } else {
-            throw new IllegalStateException("No person with id " + id + " exists");
+//            throw new IllegalStateException("No person with id " + id + " exists");
+            // Testing the customized exception class
+            throw new ResourceNotFoundException("Person", "id ", id);
         }
     }
 
