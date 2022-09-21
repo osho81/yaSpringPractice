@@ -36,6 +36,16 @@ public class PersonService implements PersonServiceRepository {
         return personRepository.findAll();
     }
 
+    @Override
+    public List<Person> getAllPersonsAsc() {
+        return personRepository.findByOrderByNameAsc();
+    }
+
+    @Override
+    public List<Person> getAllPersonsDesc() {
+        return personRepository.findByOrderByNameDesc();
+    }
+
 
     //////////////////// CREATE (SAVE) ////////////////////
     @Override
@@ -108,7 +118,7 @@ public class PersonService implements PersonServiceRepository {
         }
 
         // Check if the email is already in use by any other person/user
-        Optional<Person> foundByEmail = personRepository.findByEmail(person.getEmail());
+        Optional<Person> foundByEmail = personRepository.findPersonByEmail(person.getEmail());
         if (foundByEmail.isPresent()) {
             throw new IllegalStateException(person.getEmail() + " is already in use");
         } else if (person.getEmail().isEmpty() || person.getEmail() == null) {

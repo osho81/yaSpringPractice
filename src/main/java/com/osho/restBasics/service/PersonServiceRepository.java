@@ -13,6 +13,8 @@ public interface PersonServiceRepository {
     //////// READ (GET) ///////////
     Person getPerson(int id);
     List<Person> getAllPersons();
+    List<Person> getAllPersonsAsc();
+    List<Person> getAllPersonsDesc();
 
     /////// CREATE (SAVE) /////////
     Person createPerson(Person person);

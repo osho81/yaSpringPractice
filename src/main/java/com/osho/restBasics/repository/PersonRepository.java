@@ -3,6 +3,7 @@ package com.osho.restBasics.repository;
 import com.osho.restBasics.model.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -15,6 +16,11 @@ public interface PersonRepository extends JpaRepository<Person, Integer> {
     ///////// Customized methods /////////////
 
     Optional<Person> findPersonByEmail(String email);
-
     Optional<Person> findByEmail(String email);
+
+    List<Person> findByOrderByNameAsc();
+    List<Person> findByOrderByNameDesc();
+
+//    List<Person> findAllByNameOrderByNameAsc(String name);
+//    List<Person> findAllByNameOrderByNameDesc(String name);
 }

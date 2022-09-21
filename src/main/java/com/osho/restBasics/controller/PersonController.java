@@ -22,7 +22,6 @@ public class PersonController {
 //    private PersonRepository personRepository;
 
 
-
     //////////////////// READ (GET) ////////////////////
 
     @GetMapping("/{id}")
@@ -32,8 +31,18 @@ public class PersonController {
 
     @GetMapping("/all")
     public ResponseEntity<List<Person>> getAllPersons() {
-        // return ResponseEntity.ok().body(personService.getAllPersons());
+        // return ResponseEntity.ok().body(personService.getAllPersons()); // Alternatively
         return new ResponseEntity<List<Person>>(personService.getAllPersons(), HttpStatus.OK);
+    }
+
+    @GetMapping("/all/asc")
+    public ResponseEntity<List<Person>> sortPersonsAsc() {
+        return new ResponseEntity<List<Person>>(personService.getAllPersonsAsc(), HttpStatus.OK);
+    }
+
+    @GetMapping("/all/desc")
+    public ResponseEntity<List<Person>> sortPersonsDesc() {
+        return new ResponseEntity<List<Person>>(personService.getAllPersonsDesc(), HttpStatus.OK);
     }
 
 

@@ -44,7 +44,6 @@ public class Person {
     public int getPersonID() {
         return personID;
     }
-
     public void setPersonID(int personID) {
         this.personID = personID;
     }
@@ -52,7 +51,6 @@ public class Person {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -60,7 +58,6 @@ public class Person {
     public int getAge() {
         return age;
     }
-
     public void setAge(int age) {
         this.age = age;
     }
@@ -68,7 +65,6 @@ public class Person {
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
