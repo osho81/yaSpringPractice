@@ -30,7 +30,7 @@ public class PersonService implements PersonServiceRepository {
         } else {
 //            throw new IllegalStateException("No person with id " + id + " exists");
             // Testing the customized exception class
-            throw new ResourceNotFoundException("Person", "id ", id);
+            throw new ResourceNotFoundException("Person", "id ", foundPerson);
         }
     }
 

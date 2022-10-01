@@ -24,23 +24,18 @@ public class ResourceNotFoundException extends RuntimeException {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public String getField() {
         return field;
     }
-
     public void setField(String field) {
         this.field = field;
     }
-
     public Object getValue() {
         return value;
     }
-
     public void setValue(Object value) {
         this.value = value;
     }
