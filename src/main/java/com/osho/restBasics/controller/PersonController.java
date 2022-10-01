@@ -22,6 +22,13 @@ public class PersonController {
 //    private PersonRepository personRepository;
 
 
+    //////////////// LANDING PAGE (GET) /////////////////
+    @GetMapping("/home")
+    public void homePage(@PathVariable int id) {
+        // TODO: either add a thymleaf page or fix/update react first page
+        System.out.println("landing page under construction");
+    }
+
     //////////////////// READ (GET) ////////////////////
 
     @GetMapping("/{id}")
