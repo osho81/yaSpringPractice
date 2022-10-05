@@ -1,19 +1,15 @@
 package com.osho.restBasics.service;
 
-// Create temporary objects at start up fpr the Person table etc
-
-import com.osho.restBasics.controller.PersonController;
 import com.osho.restBasics.model.Person;
 import com.osho.restBasics.repository.PersonRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
-
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
+
+// Create temporary objects at start up fpr the Person table etc
 
 @Configuration
 public class GeneralConfig {
@@ -40,21 +36,21 @@ public class GeneralConfig {
 
 //            personRepository.saveAll(List.of(donald, ronald, mickey)); // Used during early development
 
-            // Use customized save methods in PersonService to avoid re-create rows when ddl.auto=update
+            // Use customized save methods in PersonService to avoid re-create rows when ddl-auto=update
             try {
                 personService.createPerson(donald);
             } catch (RuntimeException e) {
-                System.out.println("Truncate table(s)");
+                System.out.println(donald.getName() + " already exists");
             }
             try {
                 personService.createPerson(ronald);
             } catch (RuntimeException e) {
-                System.out.println("Truncate table(s)");
+                System.out.println(ronald.getName() + " already exists");
             }
             try {
                 personService.createPerson(mickey);
             } catch (RuntimeException e) {
-                System.out.println("Truncate table(s)");
+                System.out.println(mickey.getName() + " already exists");
             }
 
         };
