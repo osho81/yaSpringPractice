@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/api/v1/person") // i.e. http://localhost:8080/api/v1/customer
+@RequestMapping(path = "/api/v1/person") // i.e. http://localhost:8080/api/v1/person
 public class PersonController {
 
     @Autowired
@@ -25,7 +25,7 @@ public class PersonController {
     //////////////// LANDING PAGE (GET) /////////////////
     @GetMapping("/home")
     public void homePage(@PathVariable int id) {
-        // TODO: either add a thymleaf page or fix/update react first page
+        // TODO: either add a thymeleaf page or fix/update react first page
         System.out.println("landing page under construction");
     }
 
