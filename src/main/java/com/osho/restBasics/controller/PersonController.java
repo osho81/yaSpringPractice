@@ -7,13 +7,14 @@ import org.apache.catalina.LifecycleState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+//@Controller
 @RestController
 @RequestMapping(path = "/api/v1/person") // i.e. http://localhost:8080/api/v1/person
-// @CrossOrigin("http://127.0.0.1:8080/api/v1/person")
 public class PersonController {
 
     @Autowired
@@ -32,6 +33,8 @@ public class PersonController {
 
     //////////////////// READ (GET) ////////////////////
 
+    // Can also use cors on a specific method and/or for a specific origin
+// @CrossOrigin("http://127.0.0.1:8080/api/v1/person")
     @GetMapping("/{id}")
     public ResponseEntity<Person> getPersonById(@PathVariable int id) {
         return new ResponseEntity<Person>(personService.getPerson(id), HttpStatus.OK);
@@ -57,6 +60,7 @@ public class PersonController {
     public ResponseEntity<List<Person>> findByNameOrderByNameAsc(@PathVariable String name) {
         return new ResponseEntity<List<Person>>(personService.findByNameOrderByAgeAsc(name), HttpStatus.OK);
     }
+
     @GetMapping("/{name}/desc")
     public ResponseEntity<List<Person>> findByNameOrderByNameDesc(@PathVariable String name) {
         return new ResponseEntity<List<Person>>(personService.findByNameOrderByAgeDesc(name), HttpStatus.OK);
