@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/v1/person") // i.e. http://localhost:8080/api/v1/person
+// @CrossOrigin("http://127.0.0.1:8080/api/v1/person")
 public class PersonController {
 
     @Autowired

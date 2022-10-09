@@ -19,26 +19,26 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Override
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("super")
-                .password("1234")
-                .roles("ADMIN", "USER")
-                .and()
-                .withUser("duper")
-                .password("12345")
-                .roles("ADMIN")
-                .and()
-                .withUser("user10")
-                .password("1010")
-                .roles("USER")
-                .and()
-                .withUser("user20")
-                .password("2020")
-                .roles("USER");
-
-    }
+//    @Override
+//    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.inMemoryAuthentication()
+//                .withUser("super")
+//                .password("1234")
+//                .roles("ADMIN", "USER")
+//                .and()
+//                .withUser("duper")
+//                .password("12345")
+//                .roles("ADMIN")
+//                .and()
+//                .withUser("user10")
+//                .password("1010")
+//                .roles("USER")
+//                .and()
+//                .withUser("user20")
+//                .password("2020")
+//                .roles("USER");
+//
+//    }
 
     @Bean
     public PasswordEncoder getPasswordEncoder() throws Exception {
@@ -73,6 +73,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable();
     }
-
-
 }
