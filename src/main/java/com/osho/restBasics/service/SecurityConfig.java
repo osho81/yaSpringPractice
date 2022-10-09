@@ -1,4 +1,4 @@
-package com.osho.restBasics.service;
+/*package com.osho.restBasics.service;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +22,7 @@ import java.util.List;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-/*    @Override
+    @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
                 .withUser("super")
@@ -40,26 +40,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("user20")
                 .password("2020")
                 .roles("USER");
-
-    }*/
+    }
 
 
     // If use this, eventually change roles to hasAuthority("read") in antMatchers
     // (This userDetailsService requires password encoder, even if NoOpPasswordEncoder)
-    @Bean
-    public UserDetailsService UserDetailsService() {
-        var uds = new InMemoryUserDetailsManager(); // var allows for e.g. string input
-
-        var user1 = User
-                .withUsername("Osho")
-                .password("1234")
-                .authorities("read")
-                .build();
-        uds.createUser(user1);
-
-        return uds;
-    }
-
+//    @Bean
+//    public UserDetailsService UserDetailsService() {
+//        var uds = new InMemoryUserDetailsManager(); // var allows for e.g. string input
+//        var user1 = User
+//                .withUsername("Osho")
+//                .password("1234")
+//                .authorities("read")
+//                .build();
+//        uds.createUser(user1);
+//        return uds;
+//    }
 
 
     @Bean
@@ -75,6 +71,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
+//        super.configure(http);
+
 //        http.authorizeRequests().anyRequest().permitAll();
 //        http.authorizeRequests().anyRequest().authenticated();
 
@@ -105,15 +103,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //        http.cors(c ->{
 //            CorsConfigurationSource cs = request -> {
 //                CorsConfiguration cc = new CorsConfiguration();
-                  //Examples:
+        //Examples:
 //                cc.setAllowedOrigins(List.of("http://127.0.0.1:8080", @http://localhost:9090@));
 //                cc.setAllowedMethods(List.of("GET", "POST"));
 //                return cc;
 //            };
 //            c.configurationSource(cs);
 //        });
-
-
-
     }
-}
+
+}*/
+
