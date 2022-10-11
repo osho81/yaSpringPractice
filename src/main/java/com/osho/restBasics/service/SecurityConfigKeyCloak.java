@@ -16,7 +16,7 @@ import org.springframework.security.web.authentication.session.SessionAuthentica
 
 
 ////---------------- KEYCLOAK CLASS -------------////
-// uncomment this for keycloakc - comment SecurityConfig
+// uncomment this for keycloak - comment SecurityConfig
 ////----------- KEYCLOAK CONFIGURATION ----------////
 
 @KeycloakConfiguration
