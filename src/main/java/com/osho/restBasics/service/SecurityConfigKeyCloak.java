@@ -16,6 +16,7 @@ import org.springframework.security.web.authentication.session.SessionAuthentica
 
 
 ////---------------- KEYCLOAK CLASS -------------////
+// uncomment this for keycloakc - comment SecurityConfig
 ////----------- KEYCLOAK CONFIGURATION ----------////
 
 @KeycloakConfiguration
@@ -42,16 +43,16 @@ public class SecurityConfigKeyCloak extends KeycloakWebSecurityConfigurerAdapter
         return new HttpSessionManager();
     }
 
-//    @Override
-//    public void configure(HttpSecurity http) throws Exception {
-//        super.configure(http);
-//        http
-//                .authorizeHttpRequests()
-//                .antMatchers("api/v1/person/all").hasRole("ADMIN")
-//                .antMatchers("api/v1/person/{id}").hasRole("USER")
-//                .anyRequest().authenticated();
-//        http.csrf().disable();
-//    }
+    @Override
+    public void configure(HttpSecurity http) throws Exception {
+        super.configure(http);
+        http
+                .authorizeRequests() // NOT authorizeHttpRequests() !!!
+                .antMatchers("api/v1/person/all").hasRole("ADMIN")
+                .antMatchers("api/v1/person/{id}").hasRole("USER")
+                .anyRequest().authenticated();
+        http.csrf().disable();
+    }
 
 
 }

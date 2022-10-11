@@ -1,4 +1,6 @@
-/*package com.osho.restBasics.service;
+
+
+package com.osho.restBasics.service;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +19,10 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import java.util.List;
+
+////---------------- KEYCLOAK CLASS -------------////
+// uncomment this for basic security etc. - comment SecurityConfigKeyCloak
+////----------- SPRING SECURITY CONFIGURATION pre 2.7.* ----------////
 
 @Configuration
 @EnableWebSecurity
@@ -112,5 +118,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //        });
     }
 
-}*/
+}
 
