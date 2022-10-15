@@ -48,10 +48,17 @@ public class SecurityConfigKeyCloak extends KeycloakWebSecurityConfigurerAdapter
     public void configure(HttpSecurity http) throws Exception {
         super.configure(http);
         http
+
+                // Test these again with the added /; test also with quarkus 19
                 .authorizeRequests() // NOT authorizeHttpRequests() !!!
-                .antMatchers("api/v1/person/all").hasRole("admin")
-                .antMatchers("api/v1/person/{id}").hasRole("user")
-                .antMatchers(HttpMethod.POST,"api/v1/person").hasRole("user")
+//                .antMatchers("/api/v1/person/all").hasRole("user")
+//                .antMatchers("/api/v1/person/{id}").hasRole("admin")
+//                .antMatchers(HttpMethod.POST,"/api/v1/person").hasRole("admin")
+
+                .antMatchers("/api/v1/person/all/**").permitAll()
+                .antMatchers("/api/v1/person/{id}").hasRole("user")
+                .antMatchers(HttpMethod.POST).hasRole("admin")
+
                 .anyRequest().authenticated();
         http.csrf().disable();
     }

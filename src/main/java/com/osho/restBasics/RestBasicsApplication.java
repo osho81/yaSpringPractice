@@ -12,7 +12,7 @@ public class RestBasicsApplication {
 		SpringApplication.run(RestBasicsApplication.class, args);
 	}
 
-	@Bean
+	@Bean // Instead of keycloak.json
 	public KeycloakSpringBootConfigResolver keycloakConfigResolver() {
 		return new KeycloakSpringBootConfigResolver();
 	}
