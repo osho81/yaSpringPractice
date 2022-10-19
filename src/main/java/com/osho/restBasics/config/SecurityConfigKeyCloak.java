@@ -1,4 +1,5 @@
-package com.osho.restBasics.service;
+/*
+package com.osho.restBasics.config;
 
 import org.keycloak.adapters.springsecurity.KeycloakConfiguration;
 import org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationProvider;
@@ -58,10 +59,12 @@ public class SecurityConfigKeyCloak extends KeycloakWebSecurityConfigurerAdapter
                 .antMatchers("/api/v1/person/all/**").permitAll()
                 .antMatchers("/api/v1/person/{id}").hasRole("user")
                 .antMatchers(HttpMethod.POST).hasRole("admin")
+                .antMatchers(HttpMethod.PUT).hasAnyRole("admin", "user")
+//                .antMatchers(HttpMethod.DELETE).hasRole("admin")
+                .antMatchers("/api/v1/person/delete/{id}").hasRole("admin")
 
                 .anyRequest().authenticated();
         http.csrf().disable();
     }
-
-
 }
+*/

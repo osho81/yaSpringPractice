@@ -1,6 +1,4 @@
-/*
-
-package com.osho.restBasics.service;
+package com.osho.restBasics.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,8 +22,8 @@ import java.util.List;
 // uncomment this for basic security etc. - comment SecurityConfigKeyCloak
 ////----------- SPRING SECURITY CONFIGURATION pre 2.7.* ----------////
 
-//@Configuration
-//@EnableWebSecurity
+@Configuration
+@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
@@ -120,5 +118,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 }
 
-*/
+
 

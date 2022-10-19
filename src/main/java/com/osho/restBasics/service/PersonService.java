@@ -28,9 +28,12 @@ public class PersonService implements PersonServiceRepository {
         if (foundPerson.isPresent()) {
             return foundPerson.get();
         } else {
-//            throw new IllegalStateException("No person with id " + id + " exists");
-            // Testing the customized exception class
-            throw new ResourceNotFoundException("Person", "id ", foundPerson);
+            throw new IllegalStateException("No person with id " + id + " exists");
+//            throw new RuntimeException("No person with id " + id + " exists");
+
+            // Testing the customized exception class; not working as of 221015
+//            throw new ResourceNotFoundException("Person", "Id", foundPerson);
+//            throw new ResourceNotFoundException("Test with only a message");
         }
     }
 
@@ -40,7 +43,6 @@ public class PersonService implements PersonServiceRepository {
     }
 
     // GET and SORT
-
     @Override // Find all persons, and sort ascending
     public List<Person> getAllPersonsAsc() {
         return personRepository.findByOrderByNameAsc();

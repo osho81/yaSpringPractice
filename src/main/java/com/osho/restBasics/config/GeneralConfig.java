@@ -1,7 +1,8 @@
-package com.osho.restBasics.service;
+package com.osho.restBasics.config;
 
 import com.osho.restBasics.model.Person;
 import com.osho.restBasics.repository.PersonRepository;
+import com.osho.restBasics.service.PersonService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
