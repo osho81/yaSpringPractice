@@ -82,7 +82,7 @@ public class PersonService implements PersonServiceRepository {
     @Override
     public Person createPersonWithLogic(Person person) {
         Optional<Person> foundByEmail = personRepository.findPersonByEmail(person.getEmail());
-        if (foundByEmail.isPresent()) {
+        if (foundByEmail.isPresent()) { // Check if email is occupied
             throw new IllegalStateException(person.getEmail() + " is used by another person");
         } else {
             // Before saving, check if is an adult, and if name-field is included
