@@ -8,16 +8,12 @@ public class Person {
     @Id // Primary key
     @GeneratedValue(strategy = GenerationType.AUTO) // Or IDENTITY
     private int personID;
-
     @Column(name = "name", nullable = false)
     private String name;
-
     @Column(name = "age")
     private int age;
-
     @Column(name = "email")
     private String email;
-
 
     // Empty constructor
     public Person() {

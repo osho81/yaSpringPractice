@@ -108,7 +108,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //            CorsConfigurationSource cs = request -> {
 //                CorsConfiguration cc = new CorsConfiguration();
         //Examples:
-//                cc.setAllowedOrigins(List.of("http://127.0.0.1:8080", @http://localhost:9090@));
+//                cc.setAllowedOrigins(List.of("http://127.0.0.1:8080", "http://localhost:9090"));
 //                cc.setAllowedMethods(List.of("GET", "POST"));
 //                return cc;
 //            };
